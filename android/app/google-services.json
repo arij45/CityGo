@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "57378939380",
+    "project_id": "citygo-43311",
+    "storage_bucket": "citygo-43311.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:57378939380:android:1fc6c67bea08d4ccdc19a1",
+        "android_client_info": {
+          "package_name": "com.example.citygo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "57378939380-t37lja3217f1det6fk871d7ad1qm41to.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAnchrLN3sAgndpL4i_OHL8_Gmi5_y1_4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "57378939380-t37lja3217f1det6fk871d7ad1qm41to.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
