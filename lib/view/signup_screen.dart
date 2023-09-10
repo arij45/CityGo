@@ -45,6 +45,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
     if (widget.onProfileImageSelected != null) {
       widget.onProfileImageSelected!();
     }
+
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('profileimage', profileImage!);
   }
 
   final _registerFormKey = GlobalKey<FormState>();
@@ -84,7 +87,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             body: Stack(
                 children: [
                   Container(
-                    color: Color(0xFF3C77E1),
+                    color: Color(0XFF105EA0),
                   ),
                   SingleChildScrollView(
                     padding: EdgeInsets.only(bottom: 50.0),
@@ -154,6 +157,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     },
                                     icon: Icon(
                                       Icons.add_a_photo,
+                                      color: Colors.white,
                                       size: 20,
                                     ),
                                   ),
@@ -179,7 +183,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     hintText: "First Name",
                                     hintStyle: TextStyle(
                                       fontFamily: 'Georgia',
-                                      color: Color(0xFF345B5E),
+                                      color: Color(0xFFFFFFFF),
                                       fontWeight: FontWeight.bold,
                                       // Specify the desired color for the hint text
                                     ),
@@ -210,7 +214,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     hintText: "Last Name",
                                     hintStyle: TextStyle(
                                       fontFamily: 'Georgia',
-                                      color: Color(0xFF345B5E),
+                                      color: Color(0xFFFFFFFF),
                                       fontWeight: FontWeight.bold,
                                       // Specify the desired color for the hint text
                                     ),
@@ -265,7 +269,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     hintText: "Birth Date",
                                     hintStyle: TextStyle(
                                       fontFamily: 'Georgia',
-                                      color: Color(0xFF345B5E),
+                                      color: Color(0xFFFFFFFF),
                                       fontWeight: FontWeight.bold,
                                     ),
                                     errorText: _birthDateError, // Display the birth date error message here
@@ -294,21 +298,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     hintText: "Identity Card",
                                     hintStyle: TextStyle(
                                       fontFamily: 'Georgia',
-                                      color: Color(0xFF345B5E),
+                                      color: Color(0xFFFFFFFF),
                                       fontWeight: FontWeight.bold,
                                     ),
-                                    /*suffixIcon: GestureDetector(
-                                          onTap:() {
-                                           selectIdentityCardImage();
-                                          },
-                                          child: Icon(
-                                            Icons.file_download_outlined,
-                                            size: 30,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-
-                                         */
                                     errorBorder: UnderlineInputBorder(
                                       borderRadius: BorderRadius.circular(6.0),
                                       borderSide: BorderSide(
@@ -335,7 +327,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     hintText: "Phone number",
                                     hintStyle: TextStyle(
                                       fontFamily: 'Georgia',
-                                      color: Color(0xFF345B5E),
+                                      color: Color(0xFFFFFFFF),
                                       fontWeight: FontWeight.bold,
                                       // Specify the desired color for the hint text
                                     ),
@@ -379,7 +371,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     hintText: "License Type",
                                     hintStyle: TextStyle(
                                       fontFamily: 'Georgia',
-                                      color: Color(0xFF345B5E),
+                                      color: Color(0xFFFFFFFF),
                                       fontWeight: FontWeight.bold,
                                     ),
                                     errorBorder: UnderlineInputBorder(
@@ -428,7 +420,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     hintText: "Email",
                                     hintStyle: TextStyle(
                                       fontFamily: 'Georgia',
-                                      color: Color(0xFF345B5E),
+                                      color: Color(0xFFFFFFFF),
                                       fontWeight: FontWeight.bold,
                                       // Specify the desired color for the hint text
                                     ),
@@ -460,7 +452,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     hintText: "Password",
                                     hintStyle: TextStyle(
                                       fontFamily: 'Georgia',
-                                      color: Color(0xFF345B5E),
+                                      color: Color(0xFFFFFFFF),
                                       fontWeight: FontWeight.bold,
                                       // Specify the desired color for the hint text
                                     ),

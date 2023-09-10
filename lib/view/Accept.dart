@@ -13,7 +13,7 @@ class Accept extends StatelessWidget {
       body: Stack(
         children: [
           Container(
-            color: Color(0xFF3C77E1),
+            color: Color(0xFF105EA0),
           ),
           Positioned(
             top: 50,

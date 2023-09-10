@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:citygo/view/signup_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -20,11 +22,18 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
   String? emailValue ;
-
+  String? profileimage ;
   late FirebaseAuth _auth;
   User? _user;
   final FirebaseStorage _storage = FirebaseStorage.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  Future<String?> getProfileImage() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? profileimage = prefs.getString('profileimage');
+    return profileimage;
+  }
+
 
   @override
   void initState() {
@@ -34,11 +43,17 @@ class _HomeScreenState extends State<HomeScreen> {
     Emailvalue();
     updateDocumentValuesSF();
     // checkAndNavigate(context);
+    getProfileImage().then((value) {
+      setState(() {
+        profileimage = value;
+      });
+    });
   }
 
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
         body:
         StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
@@ -68,10 +83,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 });
               } else {
+
                 return Stack(
+
                     children: [
                       Container(
-                        color: Color(0xFF3C77E1),
+                        color: Color(0xFF105EA0),
                       ),
                       Positioned(
                         top: 25,
@@ -118,16 +135,23 @@ class _HomeScreenState extends State<HomeScreen> {
                       Positioned(
                         top: 150,
                         left: 180,
-                        child: Container(
+                          child: ClipOval(
+                           child: Container(
                           width: 50,
                           height: 50,
                           decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('assets/images/motif3.png'),
+                            image: profileimage != null
+                                ? DecorationImage(
+                              image: FileImage(File(profileimage!)), // Load image from file path
+                              fit: BoxFit.cover,
+                            )
+                                : DecorationImage(
+                              image: AssetImage('assets/images/motif3.png'), // Default image if profileimage is null or empty
                               fit: BoxFit.cover,
                             ),
                           ),
                         ),
+                      ),
                       ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -264,7 +288,7 @@ class _HomeScreenState extends State<HomeScreen> {
               return Stack(
                   children: [
                     Container(
-                      color: Color(0xFF3C77E1),
+                      color: Color(0xFF105EA0),
                     ),
                     Positioned(
                       top: 25,
@@ -296,7 +320,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     Positioned(
                       top: 150,
-                      left: 150,
+                      left: 180,
                       child: Container(
                         width: 50,
                         height: 50,
@@ -310,14 +334,21 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     Positioned(
                       top: 150,
-                      left: 150,
-                      child: Container(
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage('assets/images/motif3.png'),
-                            fit: BoxFit.cover,
+                      left: 180,
+                      child: ClipOval(
+                        child: Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            image: profileimage != null
+                                ? DecorationImage(
+                              image: FileImage(File(profileimage!)), // Load image from file path
+                              fit: BoxFit.cover,
+                            )
+                                : DecorationImage(
+                              image: AssetImage('assets/images/motif3.png'), // Default image if profileimage is null or empty
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),

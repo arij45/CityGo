@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
         resizeToAvoidBottomInset: true,
         body:  Container(
           decoration: BoxDecoration(
-            color:Color(0XFF3C77E1),
+            color:Color(0XFF105EA0),
           ),
           padding:
           const EdgeInsets.only(left: 45.0, right: 8.0, top: 48),
@@ -115,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       hintText: "Username",
                       hintStyle: TextStyle(
                         fontFamily: 'Georgia',
-                        color: Color(0xFF345B5E),
+                        color: Colors.white,
                         fontWeight: FontWeight.bold,
                         // Specify the desired color for the hint text
                       ),
@@ -148,7 +148,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       hintText: "Password",
                       hintStyle: TextStyle(
                           fontFamily: 'Georgia',
-                          color: Color(0xFF345B5E),
+                          color: Colors.white,
                           fontWeight: FontWeight
                               .bold // Specify the desired color for the hint text
                       ),
@@ -168,8 +168,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   _isProcessing
                       ? CircularProgressIndicator()
                       : Row(
-                    mainAxisAlignment:
-                    MainAxisAlignment.center,
+                          mainAxisAlignment:
+                          MainAxisAlignment.center,
                             children: [
                            ElevatedButton(
                              key: Key('signin'),
@@ -226,7 +226,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     BorderRadius.circular(25),
                                   ),
                                 ),
-                                minimumSize: MaterialStateProperty.all(Size(size.width*.4,57))
+                                minimumSize: MaterialStateProperty.all(Size(150, 57))
                             ),
                         ),
                     ],
@@ -274,7 +274,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Text(
                       'Sign up',
                       style: TextStyle(
-                        color: Colors.white,
+                       color: Color(0xFF0F5CA0),
                         fontFamily: 'Georgia',
                           fontWeight:FontWeight.bold,
                           fontSize:16
@@ -283,7 +283,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: ButtonStyle(
                         backgroundColor:
                         MaterialStateProperty.all<
-                            Color>(Color(0xFF0F5CA0)),
+                            Color>(Color(0xFFFFFFFF)),
                         shape: MaterialStateProperty.all<
                             RoundedRectangleBorder>(
                           RoundedRectangleBorder(
@@ -291,7 +291,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             BorderRadius.circular(25),
                           ),
                         ),
-                        minimumSize: MaterialStateProperty.all(Size(size.width*.4,57))
+                        minimumSize: MaterialStateProperty.all(Size(150, 57))
                     ),
                   ),
                   SizedBox(height: 24.0),

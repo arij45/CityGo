@@ -12,7 +12,7 @@ class CustomNavigationBar extends StatelessWidget {
     return BottomNavigationBar(
       currentIndex: currentIndex,
       onTap: onTap,
-      backgroundColor: Color(0xFF3C77E1),
+      backgroundColor: Color(0xFF105EA0),
       selectedFontSize: 12,
       unselectedFontSize: 12,
       iconSize: 10,

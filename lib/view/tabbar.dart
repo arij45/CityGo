@@ -35,7 +35,7 @@ class _TabBarExampleState extends State<TabBarExample> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(110.0),
         child: AppBar(
-          backgroundColor: Color(0xFF3C77E1),
+          backgroundColor: Color(0xFF105EA0),
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(10.0),
             child: Container(
@@ -61,7 +61,7 @@ class _TabBarExampleState extends State<TabBarExample> {
                     child: Column(
                       children: <Widget>[
                         ButtonsTabBar(
-                          backgroundColor: Color(0xFF0F5CA0),
+                          backgroundColor: Color(0xFF105EA0),
                           unselectedBackgroundColor: Color(0xFF3C77E1),
                           unselectedLabelStyle: TextStyle(color: Colors.white),
                           tabs: [

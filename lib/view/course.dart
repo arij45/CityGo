@@ -46,7 +46,7 @@ class _courseState extends State<course> {
   late File ordre ;
   String? excel ;
   TextStyle defaultStyle = TextStyle(
-    color: Color(0xFF0F5CA0),
+    color: Color(0xFF105EA0),
     fontSize: 12,
     fontWeight: FontWeight.bold,
     fontFamily: 'Georgia',
@@ -177,7 +177,7 @@ class _courseState extends State<course> {
                 bottomLeft: Radius.circular(60.0),
               ),
               image: DecorationImage(
-                image: AssetImage('assets/images/Rectangle1.png'),
+                image: AssetImage('assets/images/Rectangle2.png'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -192,74 +192,9 @@ class _courseState extends State<course> {
       ),
       body:
       Padding(
-      padding: EdgeInsets.only(top: 50.0, left: 18.0),
+      padding: EdgeInsets.only(top: 30.0, left: 18.0),
       child :Container(
         padding: EdgeInsets.only(top: 30),
-
-            /*
-              Positioned(
-                top: 40,
-                left: 20,
-                child: Container(
-                  width: 30,
-                  height: 30,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/driver.png'),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                top: 45,
-                left: 30,
-                child: Container(
-                  width: 180,
-                  height: 30,
-                  child: Center(
-                    child: Text(
-                      'Hello Houcem', // Replace this with the text you want to display
-                      style: TextStyle(
-                        color: Colors.white, // You can set the text color
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Georgia',
-                      ),
-                    ),
-                  ),
-
-                ),
-              ),
-              Positioned(
-                top: 40,
-                right: 40,
-                child: Container(
-                  width: 45,
-                  height: 45,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/motif4.png'),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                top: 43,
-                right: 42,
-                child: Container(
-                  width: 40,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/motif3.png'),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ),
-              */
                 width: MediaQuery
                     .of(context)
                     .size
@@ -276,7 +211,7 @@ class _courseState extends State<course> {
                         60.0), // Adjust the value as per your requirement
                   ),
                   image: DecorationImage(
-                    image: AssetImage('assets/images/login.jpg'),
+                    image: AssetImage('assets/images/Rectangle1.png'),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -744,7 +679,7 @@ class _courseState extends State<course> {
                                                     ),
                                                   ),
                                                   style: ButtonStyle(
-                                                    backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF437FE6)),
+                                                    backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF105EA0)),
                                                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                                       RoundedRectangleBorder(
                                                         borderRadius: BorderRadius.circular(25),
@@ -1194,7 +1129,7 @@ class _courseState extends State<course> {
                         ),
                       ),
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF437FE6)),
+                        backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF105EA0)),
                         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(25),

@@ -145,7 +145,7 @@ class _ImagesPageState extends State<ImagesPage> {
       body: Stack(
         children: [
           Container(
-            color: Color(0xFF3C77E1),
+            color: Color(0xFF105EA0),
           ),
           Padding(
             padding: EdgeInsets.only(top: 85, left: 45, right: 20),
@@ -375,177 +375,162 @@ class _ImagesPageState extends State<ImagesPage> {
               ],
             ),
           ),
-          Positioned(
-            bottom: 250,
-            left:45 ,
-            child: GestureDetector(
-              onTap: () {
-                setState(() {
-                  int nextAvailableIndex = areZonesVisible.indexOf(false);
-                  if (nextAvailableIndex != -1) {
+                Positioned(
+                bottom: 250,
+                left:45 ,
+                    child: ElevatedButton(
+                    onPressed: () {
+                    setState(() {
+                    int nextAvailableIndex = areZonesVisible.indexOf(false);
+                    if (nextAvailableIndex != -1) {
                     areZonesVisible[nextAvailableIndex] = true;
-                  }
-                });
-              },
-              child: Container(
-                width: 150,
-                height: 40,
-                decoration: BoxDecoration(
-                  color: Color(0xFFFFFFFF),
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                child: Center(
-                  child: Text(
+                    }
+                    });
+                    },
+                    style: ElevatedButton.styleFrom(
+                    primary:Color(0xFFFFFFFF),
+                    shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25),
+                    ),
+                    ),
+                    child: Text(
                     'More',
                     style: TextStyle(
-                      color: Color(0xFF0F5CA0),
-                      fontFamily: 'Georgia',
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                    color:Color(0xFF0F5CA0),
+                    fontFamily: 'Georgia',
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    ),
+                    ),
                     ),
                   ),
-                ),
-              ),
-            ),
-          ),
           Stack(
-            children: [
-              Positioned(
-                top: 450,
-                left: 45,
-                right: 20,
-                bottom: 0,
-                child: ListView(
-                  children: [
-                    for (int i = 0; i < areZonesVisible.length; i++)
-                      if (areZonesVisible[i])
-                        Column(
-                          children: [
-                            Container(
-                              width: MediaQuery.of(context).size.width * 0.800,
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Colors.grey,
-                                  width: 3,
-                                ),
-                              ),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    color: Colors.white,
-                                    width: MediaQuery.of(context).size.width * 0.800,
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        if (more[i] != null && more[i]!.endsWith('.pdf')) {
-                                          showPdfDialog(context, more[i]!);
-                                        } else {
-                                          selectMore(i); // Pass the zone index to the selectMore function
-                                        }
-                                      },
-                                      child: more[i] != null && more[i]!.endsWith('.pdf')
-                                          ? Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: [
-                                          Icon(Icons.picture_as_pdf),
-                                          SizedBox(height: 5),
-                                          Text(
-                                            path.basename(more[i]!),
-                                            style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-                                            textAlign: TextAlign.center,
-                                          ),
-                                        ],
-                                      )
-                                          : more[i] != null
-                                          ? Image.file(File(more[i]!), fit: BoxFit.cover)
-                                          : Column(
-                                        children: [
-                                          Icon(Icons.file_download_outlined),
-                                          SizedBox(height: 10),
-                                          Text('Zone ${i + 1}: Click or drag a file to this area to upload',
-                                           style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
+                children: [
+                Positioned(
+    top: 450,
+    left: 45,
+    right: 20,
+    bottom: 0,
+    child: ListView(
+    children: [
+    for (int i = 0; i < areZonesVisible.length; i++)
+    if (areZonesVisible[i])
+    Column(
+    children: [
+    Container(
+    width: MediaQuery.of(context).size.width * 0.800,
+    decoration: BoxDecoration(
+    border: Border.all(
+    color: Colors.grey,
+    width: 3,
+    ),
+    ),
+    child: Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+    Container(
+    color: Colors.white,
+    width: MediaQuery.of(context).size.width * 0.800,
+    child: GestureDetector(
+    onTap: () {
+    if (more[i] != null && more[i]!.endsWith('.pdf')) {
+    showPdfDialog(context, more[i]!);
+    } else {
+    selectMore(i); // Pass the zone index to the selectMore function
+    }
+    },
+    child: more[i] != null && more[i]!.endsWith('.pdf')
+    ? Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+    Icon(Icons.picture_as_pdf),
+    SizedBox(height: 5),
+    Text(
+    path.basename(more[i]!),
+    style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+    textAlign: TextAlign.center,
+    ),
+    ],
+    )
+        : more[i] != null
+    ? Image.file(File(more[i]!), fit: BoxFit.cover)
+        : Column(
+    children: [
+    Icon(Icons.file_download_outlined),
+    SizedBox(height: 10),
+    Text('Zone ${i + 1}: Click or drag a file to this area to upload',
+    style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+    ),
+    ],
+    ),
+    ),
+    )
+    ],
+    ),
+    ),
+
                             SizedBox(height: 10),
-                          ],
-                        ),
-                    Positioned(
-                      bottom: 30,
-                      left: 0,
-                      right: 0,
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpScreen()));
-                              },
-                              child: Container(
-                                width: 80,
-                                height: 40,
-                                decoration: BoxDecoration(
-                                  color: Color(0xFFFFFFFF),
-                                  borderRadius: BorderRadius.circular(25),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    'Back',
-                                    style: TextStyle(
-                                      color: Color(0xFF0F5CA0),
-                                      fontFamily: 'Georgia',
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: 16), // Add some spacing between the buttons
-                          Expanded(
-                            child: GestureDetector(
-                              onTap: () {
-                                saveprofile();
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
-                              },
-                              child: Container(
-                                width: 80,
-                                height: 40,
-                                decoration: BoxDecoration(
-                                  color: Color(0xFFFFFFFF),
-                                  borderRadius: BorderRadius.circular(25),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    'Send',
-                                    style: TextStyle(
-                                      color: Color(0xFF0F5CA0),
-                                      fontFamily: 'Georgia',
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                                     ]
+    ),
+
+                                     Row(
+                                       mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpScreen()));
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                          primary:Color(0xFFFFFFFF),
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(25),
+                                          ),
+                                        ),
+                                        child: Text(
+                                          'Back',
+                                          style: TextStyle(
+                                            color:Color(0xFF0F5CA0),
+                                            fontFamily: 'Georgia',
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                    SizedBox(width: 16),
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          saveprofile();
+                                          Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                          primary: Color(0xFFFFFFFF),
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(25),
+                                          ),
+                                        ),
+                                        child: Text(
+                                          'Send',
+                                          style: TextStyle(
+                                            color: Color(0xFF0F5CA0),
+                                            fontFamily: 'Georgia',
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                ],
               ),
+
             ],
-          )
-        ],
-      ),
-    );
+          ),
+    ),
+    ]
+    ),
+    ]
+    ),
+
+
+      );
   }
 
 }
