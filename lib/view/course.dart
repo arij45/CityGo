@@ -20,6 +20,8 @@ class course extends StatefulWidget {
 
 class _courseState extends State<course> {
 
+  String? profileimage ;
+
 
   final courses excelData = Get.find<courses>();
   bool checkPassengers = false;

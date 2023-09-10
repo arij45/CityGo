@@ -1,10 +1,32 @@
+import 'dart:io';
+
+import 'package:citygo/view/signup_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'FirstPage.dart';
 import 'affichageDemande.dart';
 
 class settings extends StatelessWidget {
-  const settings({Key? key}) : super(key: key);
+
+  String? profileimage ;
+  settings({Key? key}) : super(key: key);
+
+  Future<String?> getProfileImage() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? profileimage = prefs.getString('profileimage');
+    return profileimage;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getProfileImage().then((value) {
+      setState(() {
+        profileimage = value;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +48,7 @@ class settings extends StatelessWidget {
                     bottomRight: Radius.circular(30.0)// Adjust the value as per your requirement
                 ),
                 image: DecorationImage(
-                  image: AssetImage('assets/images/rectangle1min.png'),
+                  image: AssetImage('assets/images/Rectangle2.png'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -47,87 +69,95 @@ class settings extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 152,
-            right: 142,
+            top: 150,
+            right: 140,
+            child: ClipOval(
             child: Container(
-              width: 70,
-              height: 70,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/motif3.png'),
-                  fit: BoxFit.cover,
-                ),
+            width: 75,
+            height: 75,
+            decoration: BoxDecoration(
+              image: profileimage != null
+                  ? DecorationImage(
+                image: FileImage(File(profileimage!)), // Load image from file path
+                fit: BoxFit.cover,
+              )
+                  : DecorationImage(
+                image: AssetImage('assets/images/motif3.png'), // Default image if profileimage is null or empty
+                fit: BoxFit.cover,
               ),
             ),
+          ),
+         ),
           ),
           Positioned(
             top:380,
             right:56,
-            child: Container(
-              width: 250,
-              height: 70,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(60.0),
-                  bottomLeft: Radius.circular(60.0),
-                  topLeft: Radius.circular(60.0),
-                  topRight: Radius.circular(60.0),
-                ),
-                image: DecorationImage(
-                  image: AssetImage('assets/images/Rectangle 14.png'),
-                  fit: BoxFit.cover,
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        SignUpScreen(),
+                  ),
+                );
+              },
+              child: Text(
+                'Settings',
+                style: TextStyle(
+                    color: Color(0xFFFFFFFF),
+                    fontFamily: 'Georgia',
+                    fontWeight:FontWeight.bold,
+                    fontSize:16
                 ),
               ),
-              child: Center(
-                child: Text(
-                  'Settings',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontFamily: 'Acme',
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+              style: ButtonStyle(
+                  backgroundColor:
+                  MaterialStateProperty.all<
+                      Color>(Color(0xFF0F5CA0)),
+                  shape: MaterialStateProperty.all<
+                      RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius:
+                      BorderRadius.circular(25),
+                    ),
                   ),
-                ),
+                  minimumSize: MaterialStateProperty.all(Size(250, 57))
               ),
             ),
           ),
           Positioned(
             top:480,
             right:56,
-            child: Container(
-              width: 250,
-              height: 70,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(60.0),
-                  bottomLeft: Radius.circular(60.0),
-                  topLeft: Radius.circular(60.0),
-                  topRight: Radius.circular(60.0),
-                ),
-                image: DecorationImage(
-                  image: AssetImage('assets/images/Rectangle 14.png'),
-                  fit: BoxFit.cover,
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        FirstPage(),
+                  ),
+                );
+              },
+              child: Text(
+                'Logout',
+                style: TextStyle(
+                    color: Color(0xFFFFFFFF),
+                    fontFamily: 'Georgia',
+                    fontWeight:FontWeight.bold,
+                    fontSize:16
                 ),
               ),
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) =>FirstPage(),
-                    ),
-                  );
-                },
-                child: Center(
-                  child: Text(
-                    'Logout',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontFamily: 'Acme',
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
+              style: ButtonStyle(
+                  backgroundColor:
+                  MaterialStateProperty.all<
+                      Color>(Color(0xFF0F5CA0)),
+                  shape: MaterialStateProperty.all<
+                      RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius:
+                      BorderRadius.circular(25),
                     ),
                   ),
-                ),
+                  minimumSize: MaterialStateProperty.all(Size(250, 57))
               ),
             ),
           ),
