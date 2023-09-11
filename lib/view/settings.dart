@@ -7,10 +7,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'FirstPage.dart';
 import 'affichageDemande.dart';
 
-class settings extends StatelessWidget {
+class settings extends StatefulWidget {
+  settings({Key? key}) : super(key: key);
+
+  @override
+  _SettingsState createState() => _SettingsState();
+}
+
+class _SettingsState extends State<settings> {
 
   String? profileimage ;
-  settings({Key? key}) : super(key: key);
 
   Future<String?> getProfileImage() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -31,34 +37,41 @@ class settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Container(
-            color: Colors.white,
-          ),
-          Positioned(
-            top:0,
-            left:0,
-            child: Container(
-              height: MediaQuery.of(context).size.height*0.4,
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(30.0),
-                    bottomRight: Radius.circular(30.0)// Adjust the value as per your requirement
+        backgroundColor: Color.fromRGBO(51, 51, 51, 1),
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(150.0),
+            // Set the preferred height of the AppBar
+            child: AppBar(
+              backgroundColor: Colors.transparent, // Make the AppBar transparent
+              elevation: 0, // Remove the shadow
+              flexibleSpace: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(60.0),
+                    bottomLeft: Radius.circular(60.0),
+                  ),
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/Rectangle2.png'),
+                    fit: BoxFit.cover,
+                  ),
                 ),
-                image: DecorationImage(
-                  image: AssetImage('assets/images/Rectangle2.png'),
-                  fit: BoxFit.cover,
+              ),
+              title: Text(
+                'Profil',
+                style: TextStyle(
+                  color: Colors.white, // Set title color to white
                 ),
               ),
             ),
           ),
+      body: Stack(
+        children: [
+
           Positioned(
-            top: 150,
+            top: 110,
             right: 140,
             child: Container(
-              width: 75,
+              width: 72,
               height: 75,
               decoration: BoxDecoration(
                 image: DecorationImage(
@@ -69,12 +82,12 @@ class settings extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 150,
+            top: 110,
             right: 140,
             child: ClipOval(
             child: Container(
-            width: 75,
-            height: 75,
+            width: 72,
+            height: 69,
             decoration: BoxDecoration(
               image: profileimage != null
                   ? DecorationImage(
@@ -161,7 +174,8 @@ class settings extends StatelessWidget {
               ),
             ),
           ),
-        ]
+]
+
       )
     );
   }
