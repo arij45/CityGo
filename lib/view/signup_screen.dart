@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:typed_data';
 import 'package:citygo/view/utils.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -23,6 +22,8 @@ class SignUpScreen extends StatefulWidget {
 
 
 class _SignUpScreenState extends State<SignUpScreen> {
+
+
 
 
   int identitycard = 0;
@@ -234,7 +235,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   ),
                                 ),
                                 SizedBox(height: 12.0),
-
                                 TextField(
                                   readOnly: true,
                                   controller: _birthTextController,
@@ -287,7 +287,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   ),
                                 ),
                                 SizedBox(height: 12.0),
-
                                 TextFormField(
                                   controller: _identitycardTextController,
                                   focusNode: _focusidentitycard,
@@ -314,7 +313,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     ),
                                   ),
                                 ),
-
                                 SizedBox(height: 12.0),
                                 TextFormField(
                                   controller: _phonenumberTextController,
@@ -408,7 +406,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   },
                                 ),
                                 SizedBox(height: 12.0),
-
                                 TextFormField(
                                   controller: _emailTextController,
                                   focusNode: _focusEmail,
@@ -553,14 +550,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             identitycard: identitycard,
                                             licenceType: selectedLicenseType,
                                             );
-                                            print(_nameTextController.text);
-                                            print(_lastnameTextController.text);
-                                            print(Number);
-                                            print(_emailTextController.text);
-                                            print(_passwordTextController.text);
-                                            print(profileImage);
-                                            print(identitycard);
-                                            print(selectedLicenseType);
                                             saveData();
                                             } else {
                                             // Collection exists, perform identity and email check
@@ -673,7 +662,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     textColor: Colors.white,
     );
     }
-    else if (emailSnapshot.docs.isNotEmpty) {
+    /*else if (emailSnapshot.docs.isNotEmpty) {
     // Email already exists, show a toast message
     Fluttertoast.showToast(
     msg: 'Email already exists. Please change it.',
@@ -686,6 +675,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
     textColor: Colors.white,
     );
     }
+
+     */
     else {
     navigatetoimagesPage(
     Firstname: _nameTextController
@@ -702,18 +693,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
     profileImage: profileImage,
     identitycard: identitycard,
     licenceType: selectedLicenseType);
-    print(_nameTextController.text);
-    print(_lastnameTextController
-        .text);
-    print(Number);
-
-    print(
-    _emailTextController.text);
-    print(_passwordTextController
-        .text);
-    print(profileImage);
-    print(identitycard);
-    print(selectedLicenseType);
     saveData();
     }
     }

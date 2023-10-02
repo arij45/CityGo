@@ -3,7 +3,7 @@ import 'package:citygo/view/tabbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'CustomNavigationBar.dart';
-import 'course.dart';
+import 'affichagecourse.dart';
 
 
 class MainScreen extends StatefulWidget {
@@ -17,7 +17,7 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<Widget> _pages = [
     TabBarExample(),
-    course(),
+    affichagecourse(),
     settings(),
   ];
 

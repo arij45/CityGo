@@ -1,4 +1,5 @@
 import 'package:citygo/view/FirstPage.dart';
+import 'package:citygo/view/welcome.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -27,7 +28,18 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       theme: ThemeData(primarySwatch: Colors.blue),
-      home:  FirstPage(),
+      home: FutureBuilder(
+        future: Future.delayed(Duration(seconds: 5)),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+
+            return FirstPage();
+          } else {
+
+            return Welcome();
+          }
+        },
+      ),
     );
   }
 }

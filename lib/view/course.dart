@@ -30,7 +30,7 @@ class _courseState extends State<course> {
   Timestamp? currentDate;
   Timestamp? selectedDate;
   String selectedDriver = '';
-  List<String> driverNames = ['John Doe', 'Jane Smith', 'Michael Johnson', 'Arij Kortas',];
+  List<String> driverNames = ['Iheb Lataief', 'Eya souissi', 'Hadil Kortas', 'Arij Kortas',];
   late int selectedLuggage1 ;
   late int selectedLuggage2 ;
   late int selectedLuggage3 ;
@@ -165,53 +165,32 @@ class _courseState extends State<course> {
       formattedDate = DateFormat('dd/MM/yyyy hh:mm').format(dateTime);
     }
     return Scaffold(
-      backgroundColor: Color.fromRGBO(51, 51, 51, 1),
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(150.0),
-        // Set the preferred height of the AppBar
+        preferredSize: Size.fromHeight(110.0),
         child: AppBar(
-          backgroundColor: Colors.transparent, // Make the AppBar transparent
-          elevation: 0, // Remove the shadow
-          flexibleSpace: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                bottomRight: Radius.circular(60.0),
-                bottomLeft: Radius.circular(60.0),
+          backgroundColor: Color(0xFF105EA0),
+          bottom: PreferredSize(
+            preferredSize: Size.fromHeight(10.0),
+            child: Container(
+              alignment: Alignment.centerLeft,
+              padding: EdgeInsets.only(left: 25, bottom: 8), // Adjust top padding
+              child: Text(
+                'Add Course',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: "Georgia",
+                ),
               ),
-              image: DecorationImage(
-                image: AssetImage('assets/images/Rectangle2.png'),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          title: Text(
-            'Add course',
-            style: TextStyle(
-              color: Colors.white, // Set title color to white
             ),
           ),
         ),
       ),
       body:
-      Padding(
-      padding: EdgeInsets.only(top: 30.0, left: 18.0),
-      child :Container(
+      Container(
         padding: EdgeInsets.only(top: 30),
-                width: MediaQuery
-                    .of(context)
-                    .size
-                    .width * 0.9,
-                height: MediaQuery
-                    .of(context)
-                    .size
-                    .height * 0.8,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(
-                        60.0),
-                    topRight: Radius.circular(
-                        60.0), // Adjust the value as per your requirement
-                  ),
                   image: DecorationImage(
                     image: AssetImage('assets/images/Rectangle1.png'),
                     fit: BoxFit.cover,
@@ -913,11 +892,13 @@ class _courseState extends State<course> {
                       ),
                     ),
                     SizedBox(height: 5),
+
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Checkbox(
                           side: BorderSide(
-                            color: Colors.white,
+                            color:Color(0xFF105EA0),
                             width: 1.5,
                           ),
                           value: checkPassengers,
@@ -933,7 +914,7 @@ class _courseState extends State<course> {
                         Text(
                           'Check passengers',
                           style: TextStyle(
-                            color:Colors.white,
+                            color:Color(0xFF105EA0),
                             fontSize: 12,
                             fontWeight: FontWeight.bold,
                             fontFamily: 'Georgia',
@@ -942,7 +923,7 @@ class _courseState extends State<course> {
                         SizedBox(width: 20),
                         Checkbox(
                           side: BorderSide(
-                            color: Colors.white,
+                            color:Color(0xFF105EA0),
                             width: 1.5,
                           ),
                           value: checkCar,
@@ -973,7 +954,7 @@ class _courseState extends State<course> {
                                                       mainAxisSize: MainAxisSize.min,
                                                       children: [
                                                         ListTile(
-                                                          leading: Icon(Icons.camera,color:Color(0xFF437FE6)),
+                                                          leading: Icon(Icons.camera,color:Color(0xFF105EA0)),
                                                           title: Text('Take a Photo',
                                                           style:selectedStyle),
                                                           onTap: () async {
@@ -988,7 +969,7 @@ class _courseState extends State<course> {
                                                                    }
                                                             ),
                                                         ListTile(
-                                                          leading: Icon(Icons.photo_library,color:Color(0xFF437FE6)),
+                                                          leading: Icon(Icons.photo_library,color:Color(0xFF105EA0)),
                                                           title: Text('Choose an Image',style:selectedStyle),
                                                           onTap: () async {
                                                             Navigator.pop(context);
@@ -1017,7 +998,7 @@ class _courseState extends State<course> {
                                             ),
                                             style: ButtonStyle(
                                               backgroundColor: MaterialStateProperty.all<Color>(
-                                                Color(0xFF437FE6),
+                                                Color(0xFF105EA0),
                                               ),
                                               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                                 RoundedRectangleBorder(
@@ -1045,7 +1026,7 @@ class _courseState extends State<course> {
                                             ),
                                             style: ButtonStyle(
                                               backgroundColor: MaterialStateProperty.all<Color>(
-                                                Color(0xFF437FE6),
+                                                Color(0xFF105EA0),
                                               ),
                                               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                                 RoundedRectangleBorder(
@@ -1107,7 +1088,7 @@ class _courseState extends State<course> {
                         Text(
                           'Check car',
                           style: TextStyle(
-                            color:Colors.white,
+                            color:Color(0xFF105EA0),
                             fontSize: 12,
                             fontWeight: FontWeight.bold,
                             fontFamily: 'Georgia',
@@ -1145,7 +1126,6 @@ class _courseState extends State<course> {
 
               ),
             ),
-      ),
       ),
     );
   }

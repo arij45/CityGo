@@ -13,8 +13,8 @@ class Welcome extends StatelessWidget {
           Positioned(
             child: ClipRRect(
               child: Container(
-                width: 430,
-                height: 700,
+                width: MediaQuery.of(context).size.width ,
+                height: MediaQuery.of(context).size.height ,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('assets/images/Welcome.png'),

@@ -44,11 +44,19 @@ class _LoginScreenState extends State<LoginScreen> {
     Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        backgroundColor:Colors.black,
+        backgroundColor:Colors.white,
         resizeToAvoidBottomInset: true,
-        body:  Container(
+        body:  Padding(
+        padding: EdgeInsets.only(left: 15.0),
+        child: Container(
           decoration: BoxDecoration(
-            color:Color(0XFF105EA0),
+            image: DecorationImage(
+              image: AssetImage('assets/images/login.png'),
+              fit: BoxFit.cover,
+            ),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(65.0), // Adjust the radius as needed
+            ),
           ),
           padding:
           const EdgeInsets.only(left: 45.0, right: 8.0, top: 48),
@@ -299,6 +307,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
           ),
         )
+        ),
       ),
     );
   }

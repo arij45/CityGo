@@ -118,11 +118,52 @@ class _ImagesPageState extends State<ImagesPage> {
     bool valide = false;
     DateTime now = DateTime.now();
     Timestamp currentDate = Timestamp.fromDate(now);
-
-
-    resp = await StoreData().saveData(Firstname:Firstname,Lastname:Lastname,Birthdate:Birthdate,Number:Number,licenceType:licenceType,email: email, password: password, profilefile: profileImage!,identityfile1:_identityCardImageinter1!,identityfile2:_identityCardImageinter2!, valide:valide,submissionDate:currentDate, Identitycard:identitycard,licencefile1:_licencetcardImageinter1!,licencefile2:_licencetcardImageinter2!,more1Data: more[0], more2Data: more[1],more3Data: more[2]);
+    print("----------------");
+    final existingUser = await StoreData().getUserByEmail(email!);
+    print("+++++++++++++++");
+    if (existingUser != null) {
+      print("teeeeeeeeeesttstt");
+      await StoreData().updateUserData(firstName: Firstname,
+      lastName: Lastname,
+      birthDate: Birthdate,
+      phoneNumber: Number,
+      licenceType: licenceType,
+      email: email,
+      password: password,
+      profilefile: profileImage!,
+      identityfile1: _identityCardImageinter1!,
+      identityfile2: _identityCardImageinter2!,
+      submissionDate: currentDate,
+      identityNumber: identitycard,
+      licencefile1: _licencetcardImageinter1!,
+      licencefile2: _licencetcardImageinter2!,
+      more1Data: more[0],
+      more2Data: more[1],
+      more3Data: more[2],
+      );
+    }
+    else {
+      print("false");
+      resp = await StoreData().saveData(Firstname: Firstname,
+          Lastname: Lastname,
+          Birthdate: Birthdate,
+          Number: Number,
+          licenceType: licenceType,
+          email: email,
+          password: password,
+          profilefile: profileImage!,
+          identityfile1: _identityCardImageinter1!,
+          identityfile2: _identityCardImageinter2!,
+          valide: valide,
+          submissionDate: currentDate,
+          Identitycard: identitycard,
+          licencefile1: _licencetcardImageinter1!,
+          licencefile2: _licencetcardImageinter2!,
+          more1Data: more[0],
+          more2Data: more[1],
+          more3Data: more[2]);
+    }
   }
-
   showPdfDialog(BuildContext context, String pdfPath) {
     showDialog(
       context: context,
@@ -376,7 +417,7 @@ class _ImagesPageState extends State<ImagesPage> {
             ),
           ),
                 Positioned(
-                bottom: 250,
+                bottom: 310,
                 left:45 ,
                     child: ElevatedButton(
                     onPressed: () {
@@ -469,7 +510,7 @@ class _ImagesPageState extends State<ImagesPage> {
     ),
     ),
 
-                            SizedBox(height: 10),
+                            SizedBox(height: 20),
                                      ]
     ),
 

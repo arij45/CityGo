@@ -93,7 +93,7 @@ class courses extends GetxController {
               coursesListAdmin.add(adminCourse);
               print('dateAdmin: ${adminCourse.pickUpDate}');
             } else {
-              print("true");
+              print("ggggggggggggggggggg");
 
               Course driverCourse = Course(
                 check: courseData['check'],
@@ -184,7 +184,7 @@ class courses extends GetxController {
     && course.pickUpDate.month == currentDate.add(Duration(days: 1)).month
     && course.pickUpDate.day == currentDate.add(Duration(days: 1)).day
     ));
-      for (var course in coursesListTodayDrivers) {
+      for (var course in coursesListTomorrowDrivers) {
         print('Course ID DriverTo: ${course.id}');
         print('Pickup Location DriverTo : ${course.pickUpLocation}');
         print('Dropoff Location DriverTo: ${course.dropOffLocation}');

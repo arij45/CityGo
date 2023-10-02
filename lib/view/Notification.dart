@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
     _auth = FirebaseAuth.instance;
     _user = _auth.currentUser;
     Emailvalue();
-    updateDocumentValuesSF();
+    //updateDocumentValuesSF();
     // checkAndNavigate(context);
     getProfileImage().then((value) {
       setState(() {
@@ -244,31 +244,30 @@ class _HomeScreenState extends State<HomeScreen> {
                                   SizedBox(
                                     width: 120,
                                     height: 37,
-                                    child: InkWell(
+                                      child: InkWell(
                                       onTap: () async {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                SignUpScreen(),
-                                          ),
-                                        );
-                                        print("teevfvr");
-                                        updateDocumentValuesSF();
-                                      },
-                                      child: Text(
-                                        'Edit request',
-                                        textAlign: TextAlign.right,
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 12,
-                                          fontFamily: 'Georgia',
-                                          fontWeight: FontWeight.w700,
-                                          decoration: TextDecoration.underline,
-                                          decorationColor: Colors.white,
-                                          decorationThickness: 1.5,
-                                        ),
-                                      ),
+
+                                            Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                            builder: (context) => SignUpScreen(),
+                                            ),
+                                              );
+                                              },
+
+                                          child: Text(
+                                                    'Edit request',
+                                                    textAlign: TextAlign.right,
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 12,
+                                                      fontFamily: 'Georgia',
+                                                      fontWeight: FontWeight.w700,
+                                                      decoration: TextDecoration.underline,
+                                                      decorationColor: Colors.white,
+                                                      decorationThickness: 1.5,
+                                                    ),
+                                                  ),
                                     ),
                                   ),
                                   SizedBox(width: 30),
@@ -445,18 +444,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                 SizedBox(
                                   width: 120,
                                   height: 37,
-                                  child: InkWell(
-                                    onTap: () async {
+                                      child: InkWell(
+                                      onTap: () async {
+
                                       Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              SignUpScreen(),
-                                        ),
+                                      context,
+                                      MaterialPageRoute(
+                                      builder: (context) => SignUpScreen(),
+                                      ),
                                       );
-                                      print("teevfvr");
-                                      updateDocumentValuesSF();
-                                    },
+                                      },
+
                                     child: Text(
                                       'Edit request',
                                       textAlign: TextAlign.right,
@@ -499,7 +497,7 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  Future<void> updateDocumentValuesSF() async {
+  /*Future<void> updateDocumentValuesSF() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() async {
       String? emailValue = prefs.getString('email');
@@ -539,4 +537,27 @@ class _HomeScreenState extends State<HomeScreen> {
     }
     );
   }
+
+   */
+  Future<Map<String, dynamic>> fetchUserData(String email) async {
+    final userDoc = FirebaseFirestore.instance.collection('notiNewDrivers').doc(email);
+    final userData = await userDoc.get();
+
+    if (userData.exists) {
+      return {
+        'email': userData['email'] ,
+        'firstName': userData['firstName'] ,
+        'lastName': userData['lastName'] ,
+        'birthDate': userData['birthDate'] ,
+        'identityNumber': userData['identityNumber'].toString(),
+        'phoneNumber': userData['phoneNumber'] ,
+        'password': userData['password'] ,
+      };
+    } else {
+      print("User document does not exist");
+      return {}; // Return an empty map if the user data doesn't exist
+    }
+  }
+
+
 }

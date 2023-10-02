@@ -16,8 +16,7 @@ void main() {
       ),
     ));
 
-    // Trigger the selectProfileImage function by tapping a button or performing an action
-    await tester.tap(find.byKey(Key('Icon'))); // Replace with the actual widget used to trigger image selection
+    await tester.tap(find.byKey(Key('Icon'))); 
     await tester.pump();
 
     // Access profileImage using the getter method
